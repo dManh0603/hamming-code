@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Hamming Code</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="encode-wrapper">
+        <div class="title">
+          <h1>Hamming Encoder</h1>
+      </div>
+      <div class="input">
+              <input type="text" name="input" placeholder="Enter the input"  class="input-area"/>
+              <button class="btn-submit">Encode</button>
+          </div>
+      <div class="result">
+          <h3 class="inputBits">Input bits are: <span class="inputBits-result"></span></h3>
+          <h3 class="hammingCode">Hamming code is: <span class="hammingCode-result"></span></h3>
+          <h3 class="hammingCode-evenBits">Hamming Code with even/odds Bits: <span class="hammingCode-evenBitsResult"></span></h3>
+      </div>
+      </div>
+    <div class="decode-wrapper">
+      <div class="title2">
+        <h1>Hamming Decoder</h1>
+    </div>
+    <div class="input2">
+      <input type="text" name="input" placeholder="Enter the input"  class="input-area2"/>
+      <button class="btn-submit2">Detect Error</button>
+  </div>
+  <div class="result2">
+    <h3>Input bits are: <span class="inputBits-result2"></span> </h3>
+    <h3>Error: <span class="error-position"></span> </h3>
+</div>
+    </div>
+
+    <script src="script.js" type="module"></script>
+  </body>
+</html>

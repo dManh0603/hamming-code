@@ -74,8 +74,11 @@ const findHammingCode = (inputBits) => {
 
   return hammingCode;
 };
-
+//----------------------------------------------------------------------------------------------//
+//----------------------------------------------------------------------------------------------//
 //Hamming decoder
+//----------------------------------------------------------------------------------------------//
+//----------------------------------------------------------------------------------------------//
 
 const calcRedundantBits = (m) => {
   /* Use the formula 2 ^ r >= m + r + 1
@@ -137,24 +140,15 @@ const calcParityBits = (arr, r) => {
   return arr;
 };
 
-const detectError = (arr, nr) => {
-  let n = arr.length;
-  let res = 0;
-
-  // Calculate parity bits again
-  for (let i = 0; i < nr; i++) {
-    let val = 0;
-    for (let j = 1; j < n + 1; j++) {
-      if ((j & (2 ** i)) == 2 ** i) {
-        val = val ^ parseInt(arr[(arr.length - j) % arr.length]);
-      }
-      /* Create a binary no by appending
-           parity bits together. */
+const detectError = (str) => {
+  const input = str.split('').map(Number);
+  let posErr;
+  for(let i=0; i<input.length; i++){
+    if(input[i]){
+      posErr = posErr ^ (i+1);
     }
-    res = res + val * 10 ** i;
-    // Convert binary to decimal
   }
-  return parseInt(String(res), 2);
+  return posErr;
 };
 
 //adding event listener to the encode button to display the hamming code and inputBits
@@ -207,11 +201,11 @@ decodeButton.addEventListener("click", (e) => {
   let inputBitsResult = document.querySelector(".inputBits-result2");
   let errorPosition = document.querySelector(".error-position");
   inputBitsResult.innerHTML = inputBits;
-  let result = detectError(inputBits, r);
+  let result = detectError(inputBits);
   if (result == 0) {
     errorPosition.innerHTML = "No error found";
   } else {
     errorPosition.innerHTML =
-      "Error at position " + String(m - result + 1) + " from the left";
+      "Error at position " + String(result) + " from the left";
   }
 });
